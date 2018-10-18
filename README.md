@@ -6,24 +6,22 @@
 + jQuery
 + Bootstrap
 + SCSS
-
 deployed on:
 + Github pages
 
 #### API:
 + Ruby on Rails
-
 deployed on:
 + Heroku
 
 ## Links to front-end and API:
 Front-end:
-https://dwbergstrom.github.io/ridebos-client/
+https://dwbergstrom.github.io/ridebos-client/  
 API:
 https://ridebosapi.herokuapp.com/
 
 ### Wireframes and entity relationship diagram:
-Pre-login:  
+Pre-login:
 https://drive.google.com/open?id=1E_Gk2IzBW5LK_q_8YEMbk-InqXb7Rmqy
 
 ![Pre-login](public/fe-pre-login-wireframe.png)
