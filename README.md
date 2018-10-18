@@ -1,5 +1,9 @@
 # RidBOS client
 
+The RideBOS app is a bike ride tracker which will store details of bike rides along with your total miles ridden, ride time, and longest ride.
+
+It is a JavaScript-based front-end which communicates with a Rails API.
+
 ## Technologies used:
 #### Front-end:
 + JavaScript
@@ -13,13 +17,15 @@
 
 #### API:
 + Ruby on Rails
++ PostgreSQL
 
 ##### Deployed on:
 + Heroku
 
 ## Links to front-end and API:
 Front-end:
-https://dwbergstrom.github.io/ridebos-client/  
+https://dwbergstrom.github.io/ridebos-client/
+
 API:
 https://ridebosapi.herokuapp.com/
 
