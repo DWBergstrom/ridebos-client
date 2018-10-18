@@ -19,7 +19,7 @@
 
 ## Links to front-end and API:
 Front-end:
-https://dwbergstrom.github.io/ridebos-client/
+https://dwbergstrom.github.io/ridebos-client/  
 API:
 https://ridebosapi.herokuapp.com/
 
