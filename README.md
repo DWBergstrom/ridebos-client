@@ -6,17 +6,20 @@
 + jQuery
 + Bootstrap
 + SCSS
-deployed on:
+
+##### Deployed on:
 + Github pages
+
 
 #### API:
 + Ruby on Rails
-deployed on:
+
+##### Deployed on:
 + Heroku
 
 ## Links to front-end and API:
 Front-end:
-https://dwbergstrom.github.io/ridebos-client/  
+https://dwbergstrom.github.io/ridebos-client/
 API:
 https://ridebosapi.herokuapp.com/
 
