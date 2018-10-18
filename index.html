@@ -14,7 +14,7 @@
     <body>
       <h1>RideBOS</h1>
 
-      <form id="sign-up-form">
+      <form id="sign-up-form" class="auth auth-in">
         <legend> Sign up here to start tracking bike rides </legend>
         <input required type="email" name="credentials[email]" placeholder="Enter Email" />
         <input required type="password" name="credentials[password]" placeholder="Enter Password" />
@@ -23,7 +23,7 @@
         <br />
       </form>
 
-      <form id="sign-in-form">
+      <form id="sign-in-form" class="auth auth-in">
         <legend> Sign in: </legend>
         <input required type="email" name="credentials[email]" placeholder="Enter Email" />
         <input required type="password" name="credentials[password]" placeholder="Enter Password" />
@@ -31,7 +31,7 @@
         <br />
       </form>
 
-      <form id="change-password-form" class="hidden">
+      <form id="change-password-form" class="auth auth-out hidden">
         <legend> Change password: </legend>
         <input required type="password" name="passwords[old]" placeholder="Enter Old Password" />
         <input required type="password" name="passwords[new]" placeholder="Enter New Password" />
@@ -40,13 +40,13 @@
         <br />
       </form>
 
-      <button id="sign-out-button" class="hidden"> Sign Out </button>
+      <button id="sign-out-button" class="auth auth-out hidden"> Sign Out </button>
       <br />
       <div class="col-4 box sign-out"><h2 id="auth-message"></h2></div>
 
       <div>
         <br />
-        <button id="total-rides" type="button" class="btn btn-primary hidden">Get my ride stats</button>
+        <button id="total-rides" type="button" class="btn btn-primary rides hidden">Get my ride stats</button>
         <br />
       </div>
 
