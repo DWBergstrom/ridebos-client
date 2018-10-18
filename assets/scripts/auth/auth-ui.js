@@ -30,6 +30,7 @@ const signInSuccess = function (response) {
   $('.display-message2').removeClass('hidden')
   $('#sign-out-button').removeClass('hidden')
   $('#total-rides').removeClass('hidden')
+  $('#ride-create').removeClass('hidden')
 }
 
 const signInError = function () {

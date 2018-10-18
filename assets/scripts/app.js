@@ -15,4 +15,5 @@ $(() => {
   $('#change-password-form').on('submit', authEvents.onChangePassword)
   $('#sign-out-button').on('click', authEvents.onSignOut)
   $('#total-rides').on('click', rideEvents.onGetRides)
+  $('#ride-create').on('submit', rideEvents.onCreateRide)
 })

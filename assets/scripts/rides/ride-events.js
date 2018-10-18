@@ -10,6 +10,15 @@ const onGetRides = function () {
     .catch(console.log)
 }
 
+const onCreateRide = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.createRide(data)
+    .then(ui.onCreateRideSuccess)
+    .catch(console.log)
+}
+
 module.exports = {
-  onGetRides
+  onGetRides,
+  onCreateRide
 }

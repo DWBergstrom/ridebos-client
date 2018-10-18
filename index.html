@@ -46,12 +46,25 @@
       <div class="col-4 box sign-out"><h2 id="password-message"></h2></div>
 
 
+      <form id="ride-create" class="rides hidden">
+        <h2>Add a new ride:</h2>
+        <div>
+          <input required type="text" name="ride[ride_name]" placeholder="Name your ride" />
+          <input required type="text" name="ride[distance]" placeholder="Distance in miles" />
+          <input required type="text" name="ride[time]" placeholder="Time in minutes" />
+          <input required type="text" name="ride[date]" placeholder="Date (YYYY-MM-DD)" />
+          <button type="submit" class="btn btn-primary">Create Your Ride!</button>
+        </div>
+      </form>
 
       <div>
+        <br />
         <button id="total-rides" type="button" class="btn btn-primary hidden">Get my ride stats</button>
+        <br />
       </div>
 
       <div id="ride-content">
+        <br />
 
       </div>
 
