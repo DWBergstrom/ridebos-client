@@ -17,6 +17,8 @@ const signUpError = function () {
   $('#auth-message').html('Something went wrong! Please try signing up again.').fadeOut(5000)
   $('#auth-message').css('color', 'red')
   $('.auth').trigger('reset')
+  $('.sign-up').attr('aria-expanded', 'false')
+  $('.dropdown-menu').removeClass('show')
 }
 
 const signInSuccess = function (response) {
@@ -25,6 +27,7 @@ const signInSuccess = function (response) {
   store.user = response.user
   $('.auth-in').addClass('hidden')
   $('.auth-out').removeClass('hidden')
+  $('.auth-message').css('margin-top', '50px')
   $('.rides').removeClass('hidden')
   $('.ride-content').removeClass('hidden')
   $('#ride-content').removeClass('hidden')
@@ -38,6 +41,8 @@ const signInError = function () {
   $('#auth-message').html('Something went wrong! Please try signing in again.').fadeOut(5000)
   $('#auth-message').css('color', 'red')
   $('.auth').trigger('reset')
+  $('.sign-in').attr('aria-expanded', 'false')
+  $('.dropdown-menu').removeClass('show')
 }
 
 const changePasswordSuccess = function () {
@@ -54,6 +59,8 @@ const changePasswordFailure = function () {
   $('#auth-message').html('Something went wrong with your password change! Please try again.').fadeOut(5000)
   $('#auth-message').css('color', 'red')
   $('.auth').trigger('reset')
+  $('.change-password').attr('aria-expanded', 'false')
+  $('.dropdown-menu').removeClass('show')
 }
 
 const signOutSuccess = function () {
@@ -63,6 +70,7 @@ const signOutSuccess = function () {
   $('#auth-message').css('color', 'white')
   $('.auth').trigger('reset')
   $('#auth-message').show()
+  $('.auth-message').css('margin-top', '-5px')
   $('.auth-in').removeClass('hidden')
   $('.auth-out').addClass('hidden')
   $('.rides').addClass('hidden')
