@@ -1,6 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
+  background-attachment: fixed;
+  // background-blend-mode: lighten;
   background-image: url('public/ridebos-back.png');
   background-repeat: no-repeat center center fixed;
   background-size: 100%;
@@ -17,7 +19,7 @@ body {
 }
 
 header {
-  background-color: rgba(70, 130, 180, .5);
+  background-color: rgba(70, 130, 180, .9);
   height: 150px;
   margin: 0 auto;
   // margin-top: -10px;
@@ -43,6 +45,17 @@ header {
   margin: 5px;
 }
 
-.all-stats {
-  float: clear;
+.side-nav {
+  left: 10px;
+  overflow: auto;
+  padding: 10px;
+  position: absolute;
+  top: 190px;
+  width: 200px;
+  z-index: 1;
+}
+
+.ride-content {
+  margin-left: 200px;
+  top: 40px;
 }

@@ -8,12 +8,23 @@ const onGetRidesSuccess = function (response) {
   // empty content element
   $('#ride-content').show()
   $('#ride-content').html('')
+  $('#totals-content').html('')
   // loop through API response data
+  // create total distance and time values
+  let totalDistance = 0
+  let totalTime = 0
+  let totalHTML = ''
   response.rides.forEach(ride => {
+    // update total distance and time values
+    totalDistance += ride.distance
+    totalTime += ride.time
+    // get first 10 chars of date (removes time from datetime)
+    const tempDate = ride.date
+    const date = tempDate.substring(0, 10)
     // build HTML element with data
     const rideHTML = (`
-      <h4>Ride Name: ${ride.ride_name} </h4>
-      <p>Date: ${ride.date} </p>
+      <h5>Ride Name: ${ride.ride_name} </h5>
+      <p>Date: ${date} </p>
       <p>Duration: ${ride.time} </p>
       <p>Distance: ${ride.distance} </p>
       <p>ID: ${ride.id} </p>
@@ -22,9 +33,22 @@ const onGetRidesSuccess = function (response) {
     // append rideHTML to content
     $('#ride-content').append(rideHTML)
   })
+  totalTime /= 60
+  let averageSpeed = totalDistance / totalTime
+  averageSpeed = averageSpeed.toFixed(1)
+  totalHTML = (`
+    <h5>Total distance: ${totalDistance} miles</h5>
+    <h5>Total time: ${totalTime} hours</h5>
+    <h5>Average speed: ${averageSpeed} mph</h5>
+    `)
+  // append ride totals content
+  $('#totals-content').append(totalHTML)
   // add heading when data is rendered
-  $('#ride-content').prepend(`<h2>All your rides:  </h2>
+  $('#ride-content').prepend(`<h3>All your rides:  </h3>
     <br />`)
+  $('#ride-content').css('background-color', 'rgba(70, 130, 180, .7)')
+  $('#ride-content').css('padding', '20px')
+  window.scrollTo(0, 0)
 }
 
 const onGetRidesFailure = function (response) {
@@ -38,6 +62,7 @@ const onGetRidesFailure = function (response) {
     try again.</h4>`)
   // append rideHTML to content
   $('#ride-content').append(rideHTML).fadeOut(5000)
+  window.scrollTo(0, 0)
 }
 
 const onGetOneRideSuccess = function (response) {
@@ -47,10 +72,13 @@ const onGetOneRideSuccess = function (response) {
   $('#ride-content').show()
   $('#ride-content').html('')
   const ride = response.ride
+  // get first 10 chars of date (removes time from datetime)
+  const tempDate = ride.date
+  const date = tempDate.substring(0, 10)
   // build HTML element with response
   const rideHTML = (`
     <h4>Ride Name: ${ride.ride_name} </h4>
-    <p>Date: ${ride.date} </p>
+    <p>Date: ${date} </p>
     <p>Duration: ${ride.time} </p>
     <p>Distance: ${ride.distance} </p>
     <p>ID: ${ride.id} </p>
@@ -58,8 +86,9 @@ const onGetOneRideSuccess = function (response) {
     `)
   // append rideHTML to ride-content
   $('#ride-content').append(rideHTML)
-  $('#ride-content').prepend(`<h2>Your requested ride:  </h2>
+  $('#ride-content').prepend(`<h4>Your requested ride:  </h4>
     <br />`)
+  window.scrollTo(0, 0)
 }
 
 const onGetOneRideFailure = function (response) {
@@ -73,6 +102,7 @@ const onGetOneRideFailure = function (response) {
     try again.</h4>`)
   // append rideHTML to content
   $('#ride-content').append(rideHTML).fadeOut(5000)
+  window.scrollTo(0, 0)
 }
 
 const onCreateRideSuccess = function (response) {
@@ -82,10 +112,13 @@ const onCreateRideSuccess = function (response) {
   $('#ride-content').show()
   $('#ride-content').html('')
   const ride = response.ride
+  // get first 10 chars of date (removes time from datetime)
+  const tempDate = ride.date
+  const date = tempDate.substring(0, 10)
   // build HTML element with data
   const rideHTML = (`
     <h4>Ride Name: ${ride.ride_name} </h4>
-    <p>Date: ${ride.date} </p>
+    <p>Date: ${date} </p>
     <p>Duration: ${ride.time} </p>
     <p>Distance: ${ride.distance} </p>
     <p>ID: ${ride.id} </p>
@@ -93,8 +126,9 @@ const onCreateRideSuccess = function (response) {
     `)
   // append rideHTML to content
   $('#ride-content').append(rideHTML)
-  $('#ride-content').prepend(`<h2>Your new ride:  </h2>
+  $('#ride-content').prepend(`<h4>Your new ride:  </h4>
     <br />`)
+  window.scrollTo(0, 0)
 }
 
 const onCreateRideFailure = function (response) {
@@ -108,6 +142,7 @@ const onCreateRideFailure = function (response) {
     try again.</h4>`)
   // append rideHTML to content
   $('#ride-content').append(rideHTML).fadeOut(5000)
+  window.scrollTo(0, 0)
 }
 
 const onUpdateRideSuccess = function (response) {
@@ -128,8 +163,9 @@ const onUpdateRideSuccess = function (response) {
     `)
   // append rideHTML to content
   $('#ride-content').append(rideHTML)
-  $('#ride-content').prepend(`<h2>Your updated ride:  </h2>
+  $('#ride-content').prepend(`<h4>Your updated ride:  </h4>
     <br />`)
+  window.scrollTo(0, 0)
 }
 
 const onUpdateRideFailure = function (response) {
@@ -143,6 +179,7 @@ const onUpdateRideFailure = function (response) {
     try again.</h4>`)
   // append rideHTML to content
   $('#ride-content').append(rideHTML).fadeOut(5000)
+  window.scrollTo(0, 0)
 }
 
 const onDestroyOneRideSuccess = function (response) {
@@ -159,8 +196,9 @@ const onDestroyOneRideSuccess = function (response) {
     `)
   // append rideHTML to content
   $('#ride-content').append(rideHTML)
-  $('#ride-content').prepend(`<h2>Successfully deleted ride:  </h2>
+  $('#ride-content').prepend(`<h4>Successfully deleted ride:  </h4>
     <br />`)
+  window.scrollTo(0, 0)
 }
 
 const onDestroyOneRideFailure = function (response) {
@@ -174,6 +212,7 @@ const onDestroyOneRideFailure = function (response) {
     try again.</h4>`)
   // append rideHTML to content
   $('#ride-content').append(rideHTML).fadeOut(5000)
+  window.scrollTo(0, 0)
 }
 
 module.exports = {

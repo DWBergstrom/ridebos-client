@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const authAllRides = require('./auth-allrides.js')
 
 const signUpSuccess = function () {
   $('#auth-message').show()
@@ -22,6 +23,8 @@ const signInSuccess = function (response) {
   $('.auth-in').addClass('hidden')
   $('.auth-out').removeClass('hidden')
   $('.rides').removeClass('hidden')
+  $('.side-nav').css('background-color', 'rgba(70, 130, 180, .7)')
+  authAllRides.onAuthGetRides()
 }
 
 const signInError = function () {
@@ -55,6 +58,8 @@ const signOutSuccess = function () {
   $('.auth-in').removeClass('hidden')
   $('.auth-out').addClass('hidden')
   $('.rides').addClass('hidden')
+  $('.side-nav').addClass('hidden')
+  $('#ride-content').addClass('hidden')
 }
 
 const signOutFailure = function () {
