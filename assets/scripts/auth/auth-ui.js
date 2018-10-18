@@ -17,14 +17,10 @@ const signUpError = function () {
 }
 
 const signInSuccess = function (response) {
-  $('#auth-message').show()
-  $('#auth-message').html('Sign-in successful!').fadeOut(5000)
-  $('#auth-message').css('color', 'green')
   $('.auth').trigger('reset')
   store.user = response.user
   $('.auth-in').addClass('hidden')
-  $('#change-password-form').removeClass('hidden')
-  $('#sign-out-button').removeClass('hidden')
+  $('.auth-out').removeClass('hidden')
   $('.rides').removeClass('hidden')
 }
 
@@ -52,7 +48,7 @@ const changePasswordFailure = function () {
 const signOutSuccess = function () {
   $('#ride-content').html('')
   $('#auth-message').show()
-  $('#auth-message').html('Sign out successful!').fadeOut(4000)
+  $('#auth-message').html('You are signed out.  Go ride your bike!').fadeOut(5000)
   $('#auth-message').css('color', 'green')
   $('.auth').trigger('reset')
   $('#auth-message').show()
