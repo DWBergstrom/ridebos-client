@@ -26,8 +26,17 @@ const onGetOneRide = function (event) {
     .catch(console.log)
 }
 
+const onUpdateRide = function (event) {
+  event.preventDefault()
+  const rideData = getFormFields(event.target)
+  api.updateRide(rideData)
+    .then(ui.onUpdateRideSuccess)
+    .catch(console.log)
+}
+
 module.exports = {
   onGetRides,
   onCreateRide,
-  onGetOneRide
+  onGetOneRide,
+  onUpdateRide
 }
