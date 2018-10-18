@@ -28,6 +28,8 @@ const onGetRidesSuccess = function (response) {
 }
 
 const onGetRidesFailure = function (response) {
+  // clear forms
+  $('.rides').trigger('reset')
   // empty content element
   $('#ride-content').show()
   $('#ride-content').html('')
@@ -61,6 +63,8 @@ const onGetOneRideSuccess = function (response) {
 }
 
 const onGetOneRideFailure = function (response) {
+  // clear forms
+  $('.rides').trigger('reset')
   // empty content element
   $('#ride-content').show()
   $('#ride-content').html('')
@@ -94,6 +98,8 @@ const onCreateRideSuccess = function (response) {
 }
 
 const onCreateRideFailure = function (response) {
+  // clear forms
+  $('.rides').trigger('reset')
   // empty content element
   $('#ride-content').show()
   $('#ride-content').html('')
@@ -127,6 +133,8 @@ const onUpdateRideSuccess = function (response) {
 }
 
 const onUpdateRideFailure = function (response) {
+  // clear forms
+  $('.rides').trigger('reset')
   // empty content element
   $('#ride-content').show()
   $('#ride-content').html('')
@@ -156,6 +164,8 @@ const onDestroyOneRideSuccess = function (response) {
 }
 
 const onDestroyOneRideFailure = function (response) {
+  // clear forms
+  $('.rides').trigger('reset')
   // empty content element
   $('#ride-content').show()
   $('#ride-content').html('')
