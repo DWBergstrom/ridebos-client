@@ -8,15 +8,7 @@ const store = require('../store.js')
 const onGetRides = function () {
   api.getRides()
     .then(ui.onGetRidesSuccess)
-    .catch(console.log)
-}
-
-const onCreateRide = function (event) {
-  event.preventDefault()
-  const rideData = getFormFields(event.target)
-  api.createRide(rideData)
-    .then(ui.onCreateRideSuccess)
-    .catch(console.log)
+    .catch(ui.onGetRidesFailure)
 }
 
 const onGetOneRide = function (event) {
@@ -24,7 +16,15 @@ const onGetOneRide = function (event) {
   const rideData = getFormFields(event.target)
   api.getOneRide(rideData)
     .then(ui.onGetOneRideSuccess)
-    .catch(console.log)
+    .catch(ui.onGetOneRideFailure)
+}
+
+const onCreateRide = function (event) {
+  event.preventDefault()
+  const rideData = getFormFields(event.target)
+  api.createRide(rideData)
+    .then(ui.onCreateRideSuccess)
+    .catch(ui.onCreateRideFailure)
 }
 
 const onUpdateRide = function (event) {
@@ -32,7 +32,7 @@ const onUpdateRide = function (event) {
   const rideData = getFormFields(event.target)
   api.updateRide(rideData)
     .then(ui.onUpdateRideSuccess)
-    .catch(console.log)
+    .catch(ui.onUpdateRideFailure)
 }
 
 const onDestroyRide = function (event) {
@@ -41,13 +41,13 @@ const onDestroyRide = function (event) {
   store.rideData = rideData
   api.destroyOneRide(rideData)
     .then(ui.onDestroyOneRideSuccess)
-    .catch(console.log)
+    .catch(ui.onDestroyOneRideFailure)
 }
 
 module.exports = {
   onGetRides,
-  onCreateRide,
   onGetOneRide,
+  onCreateRide,
   onUpdateRide,
   onDestroyRide
 }

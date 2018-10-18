@@ -13,17 +13,6 @@ const getRides = function () {
   })
 }
 
-const createRide = function (rideData) {
-  return $.ajax({
-    url: config.apiUrl + '/rides',
-    headers: {
-      'Authorization': `Token token=${store.user.token}`
-    },
-    method: 'POST',
-    data: rideData
-  })
-}
-
 const getOneRide = function (rideData) {
   const rideId = rideData.ride.id
   return $.ajax({
@@ -32,6 +21,17 @@ const getOneRide = function (rideData) {
       'Authorization': `Token token=${store.user.token}`
     },
     method: 'GET'
+  })
+}
+
+const createRide = function (rideData) {
+  return $.ajax({
+    url: config.apiUrl + '/rides',
+    headers: {
+      'Authorization': `Token token=${store.user.token}`
+    },
+    method: 'POST',
+    data: rideData
   })
 }
 
@@ -60,8 +60,8 @@ const destroyOneRide = function (rideData) {
 
 module.exports = {
   getRides,
-  createRide,
   getOneRide,
+  createRide,
   updateRide,
   destroyOneRide
 }

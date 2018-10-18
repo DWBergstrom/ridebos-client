@@ -70,8 +70,8 @@ const signOutFailure = function () {
 
 module.exports = {
   signUpSuccess,
-  signInSuccess,
   signUpError,
+  signInSuccess,
   signInError,
   changePasswordSuccess,
   changePasswordFailure,
