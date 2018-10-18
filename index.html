@@ -36,7 +36,7 @@
         </div>
 
         <div class="dropdown auth auth-in">
-          <button class="btn btn-dark dropdown-toggle auth-in auth-in-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-dark dropdown-toggle auth-in auth-in-btn sign-up" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Sign up
           </button>
           <div class="dropdown-menu">
@@ -60,7 +60,7 @@
         </div>
         <div class="auth-out-items fixed-top">
           <div class="dropdown auth auth-out hidden">
-            <button class="btn btn-secondary dropdown-toggle auth-out" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle auth-out change-password" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Change password
             </button>
             <div class="dropdown-menu">
@@ -93,14 +93,7 @@
             </div>
             <div id="totals-content">
             </div>
-            <button id="total-rides" type="button" class="btn btn-primary all-stats rides hidden">Show all rides</button>
-            <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-            <div class="col">
-              <div class="collapse multi-collapse" id="multiCollapseExample2">
-                <div class="card card-body">
-                </div>
-              </div>
-            </div> -->
+            <button id="total-rides" type="button" class="btn btn-primary all-stats rides hidden">Show All Rides</button>
             <form id="ride-create" class="rides hidden">
               <h4>Add a new ride:</h4>
               <div>
@@ -108,7 +101,7 @@
                 <input required type="text" name="ride[distance]" placeholder="Distance in miles" />
                 <input required type="text" name="ride[time]" placeholder="Time in minutes" />
                 <input required type="text" name="ride[date]" placeholder="Date (YYYY-MM-DD)" />
-                <button type="submit" class="btn btn-primary">Create Your Ride!</button>
+                <button type="submit" class="btn btn-primary">Create Ride</button>
               </div>
             </form>
             <form id="ride-update" class="rides hidden">
@@ -119,21 +112,21 @@
                 <input required type="text" name="ride[time]" placeholder="Time in minutes" />
                 <input required type="text" name="ride[date]" placeholder="Date (YYYY-MM-DD)" />
                 <input required type="text" name="ride[id]" placeholder="Enter ride ID" />
-                <button type="submit" class="btn btn-primary">Update Your Ride!</button>
+                <button type="submit" class="btn btn-primary">Update Ride</button>
               </div>
             </form>
             <form id="one-ride" class="rides hidden">
               <h4>Search for a ride:</h4>
               <div>
                 <input required type="text" name="ride[id]" placeholder="Enter ride ID to view" />
-                <button type="submit" class="btn btn-primary">Find my ride</button>
+                <button type="submit" class="btn btn-primary">Find Ride</button>
               </div>
             </form>
             <form id="ride-destroy" class="rides hidden">
               <h4>Delete a ride:</h4>
               <div>
                   <input required type="text" name="ride[id]" placeholder="Enter ride ID to delete" />
-                  <button type="submit" class="btn btn-primary">Delete ride</button>
+                  <button type="submit" class="btn btn-primary">Delete Ride</button>
               </div>
             </form>
           </div>
@@ -143,13 +136,8 @@
           </div>
         </div>
       </div>
-
-      <!-- <div>
-
-        <button id="total-rides" type="button" class="btn btn-primary all-stats rides hidden">Get my ride stats</button>
-
-      </div> -->
-
-
+      <div class="">
+        <a class="source-message fixed-bottom pull-right" target="_blank" href="https://github.com/DWBergstrom/ridebos-client"> <img class="link-icon" height="30px" src="public/github-512.png" alt="github">  </a>
+      </div>
     </body>
 </html>

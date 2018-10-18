@@ -8,6 +8,8 @@ const signUpSuccess = function () {
   $('#auth-message').html('Sign-up successful! Please sign in.')
   $('#auth-message').css('color', 'green')
   $('.auth').trigger('reset')
+  $('.sign-up').attr('aria-expanded', 'false')
+  $('.dropdown-menu').removeClass('show')
 }
 
 const signUpError = function () {
@@ -19,10 +21,14 @@ const signUpError = function () {
 
 const signInSuccess = function (response) {
   $('.auth').trigger('reset')
+  $('#auth-message').html('')
   store.user = response.user
   $('.auth-in').addClass('hidden')
   $('.auth-out').removeClass('hidden')
   $('.rides').removeClass('hidden')
+  $('.ride-content').removeClass('hidden')
+  $('#ride-content').removeClass('hidden')
+  $('.side-nav').removeClass('hidden')
   $('.side-nav').css('background-color', 'rgba(70, 130, 180, .7)')
   authAllRides.onAuthGetRides()
 }
@@ -39,6 +45,8 @@ const changePasswordSuccess = function () {
   $('#auth-message').html('Password change successful!').fadeOut(5000)
   $('#auth-message').css('color', 'green')
   $('.auth').trigger('reset')
+  $('.change-password').attr('aria-expanded', 'false')
+  $('.dropdown-menu').removeClass('show')
 }
 
 const changePasswordFailure = function () {

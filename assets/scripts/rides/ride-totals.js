@@ -3,13 +3,7 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
-const onAuthGetRides = function () {
-  authGetRides()
-    .then(onAuthGetRidesSuccess)
-    .catch(onAuthGetRidesFailure)
-}
-
-const authGetRides = function () {
+const getRidesTotals = function () {
   return $.ajax({
     url: config.apiUrl + '/rides',
     headers: {
@@ -19,12 +13,10 @@ const authGetRides = function () {
   })
 }
 
-const onAuthGetRidesSuccess = function (response) {
+const onGetRidesTotalsSuccess = function (response) {
   // clear forms
   $('.rides').trigger('reset')
   // empty content element
-  $('#ride-content').show()
-  $('#ride-content').html('')
   $('#totals-content').html('')
   // loop through API response data
   // create total distance and time values
@@ -41,20 +33,6 @@ const onAuthGetRidesSuccess = function (response) {
     if (ride.distance > longestRide) {
       longestRide = ride.distance
     }
-    // get first 10 chars of date (removes time from datetime)
-    const tempDate = ride.date
-    const date = tempDate.substring(0, 10)
-    // build HTML element with data
-    const rideHTML = (`
-      <h5>Ride Name: ${ride.ride_name} </h5>
-      <p>Date: ${date} </p>
-      <p>Duration: ${ride.time} minutes</p>
-      <p>Distance: ${ride.distance} miles</p>
-      <p>Ride ID: ${ride.id} </p>
-      <br />
-      `)
-    // append rideHTML to content
-    $('#ride-content').append(rideHTML)
   })
   totalTime /= 60
   totalTime = totalTime.toFixed(1)
@@ -73,26 +51,27 @@ const onAuthGetRidesSuccess = function (response) {
   }
   // append ride totals content
   $('#totals-content').append(totalHTML)
-  // add heading when data is rendered
-  $('#ride-content').prepend(`<h3>All your rides:  </h3>
-    <br />`)
-  $('#ride-content').css('background-color', 'rgba(70, 130, 180, .7)')
-  $('#ride-content').css('padding', '20px')
+  window.scrollTo(0, 0)
 }
 
-const onAuthGetRidesFailure = function (response) {
+const onGetRidesTotalsFailure = function (response) {
   // clear forms
   $('.rides').trigger('reset')
   // empty content element
   $('#ride-content').show()
   $('#ride-content').html('')
+  $('#totals-content').show()
+  $('#totals-content').html('')
   // build HTML element with data
-  const rideHTML = (`<h4>There was a problem retrieving your rides.  Please
+  const totalsHTML = (`<h4>There was a problem updating your totals.  Please
     try again.</h4>`)
-  // append rideHTML to content
-  $('#ride-content').append(rideHTML).fadeOut(5000)
+  // append totalsHTML to content
+  $('#totals-content').append(totalsHTML)
+  window.scrollTo(0, 0)
 }
 
 module.exports = {
-  onAuthGetRides
+  getRidesTotals,
+  onGetRidesTotalsSuccess,
+  onGetRidesTotalsFailure
 }

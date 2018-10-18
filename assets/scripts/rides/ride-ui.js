@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const rideTotals = require('./ride-totals.js')
 
 const onGetRidesSuccess = function (response) {
   // clear forms
@@ -10,14 +11,7 @@ const onGetRidesSuccess = function (response) {
   $('#ride-content').html('')
   $('#totals-content').html('')
   // loop through API response data
-  // create total distance and time values
-  let totalDistance = 0
-  let totalTime = 0
-  let totalHTML = ''
   response.rides.forEach(ride => {
-    // update total distance and time values
-    totalDistance += ride.distance
-    totalTime += ride.time
     // get first 10 chars of date (removes time from datetime)
     const tempDate = ride.date
     const date = tempDate.substring(0, 10)
@@ -25,30 +19,23 @@ const onGetRidesSuccess = function (response) {
     const rideHTML = (`
       <h5>Ride Name: ${ride.ride_name} </h5>
       <p>Date: ${date} </p>
-      <p>Duration: ${ride.time} </p>
-      <p>Distance: ${ride.distance} </p>
-      <p>ID: ${ride.id} </p>
+      <p>Duration: ${ride.time} minutes</p>
+      <p>Distance: ${ride.distance} miles</p>
+      <p>Ride ID: ${ride.id} </p>
       <br />
       `)
     // append rideHTML to content
     $('#ride-content').append(rideHTML)
   })
-  totalTime /= 60
-  let averageSpeed = totalDistance / totalTime
-  averageSpeed = averageSpeed.toFixed(1)
-  totalHTML = (`
-    <h5>Total distance: ${totalDistance} miles</h5>
-    <h5>Total time: ${totalTime} hours</h5>
-    <h5>Average speed: ${averageSpeed} mph</h5>
-    `)
-  // append ride totals content
-  $('#totals-content').append(totalHTML)
   // add heading when data is rendered
   $('#ride-content').prepend(`<h3>All your rides:  </h3>
     <br />`)
   $('#ride-content').css('background-color', 'rgba(70, 130, 180, .7)')
   $('#ride-content').css('padding', '20px')
   window.scrollTo(0, 0)
+  rideTotals.getRidesTotals()
+    .then(rideTotals.onGetRidesTotalsSuccess)
+    .catch(rideTotals.onGetRidesTotalsFailure)
 }
 
 const onGetRidesFailure = function (response) {
@@ -79,9 +66,9 @@ const onGetOneRideSuccess = function (response) {
   const rideHTML = (`
     <h4>Ride Name: ${ride.ride_name} </h4>
     <p>Date: ${date} </p>
-    <p>Duration: ${ride.time} </p>
-    <p>Distance: ${ride.distance} </p>
-    <p>ID: ${ride.id} </p>
+    <p>Duration: ${ride.time} minutes</p>
+    <p>Distance: ${ride.distance} miles</p>
+    <p>Ride ID: ${ride.id} </p>
     <br />
     `)
   // append rideHTML to ride-content
@@ -119,8 +106,8 @@ const onCreateRideSuccess = function (response) {
   const rideHTML = (`
     <h4>Ride Name: ${ride.ride_name} </h4>
     <p>Date: ${date} </p>
-    <p>Duration: ${ride.time} </p>
-    <p>Distance: ${ride.distance} </p>
+    <p>Duration: ${ride.time} minutes</p>
+    <p>Distance: ${ride.distance} miles</p>
     <p>ID: ${ride.id} </p>
     <br />
     `)
@@ -129,6 +116,9 @@ const onCreateRideSuccess = function (response) {
   $('#ride-content').prepend(`<h4>Your new ride:  </h4>
     <br />`)
   window.scrollTo(0, 0)
+  rideTotals.getRidesTotals()
+    .then(rideTotals.onGetRidesTotalsSuccess)
+    .catch(rideTotals.onGetRidesTotalsFailure)
 }
 
 const onCreateRideFailure = function (response) {
@@ -156,9 +146,9 @@ const onUpdateRideSuccess = function (response) {
   const rideHTML = (`
     <h4>Ride Name: ${ride.ride_name} </h4>
     <p>Date: ${ride.date} </p>
-    <p>Duration: ${ride.time} </p>
-    <p>Distance: ${ride.distance} </p>
-    <p>ID: ${ride.id} </p>
+    <p>Duration: ${ride.time} minutes</p>
+    <p>Distance: ${ride.distance} miles</p>
+    <p>Ride ID: ${ride.id} </p>
     <br />
     `)
   // append rideHTML to content
@@ -199,6 +189,9 @@ const onDestroyOneRideSuccess = function (response) {
   $('#ride-content').prepend(`<h4>Successfully deleted ride:  </h4>
     <br />`)
   window.scrollTo(0, 0)
+  rideTotals.getRidesTotals()
+    .then(rideTotals.onGetRidesTotalsSuccess)
+    .catch(rideTotals.onGetRidesTotalsFailure)
 }
 
 const onDestroyOneRideFailure = function (response) {
