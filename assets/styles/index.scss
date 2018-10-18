@@ -1,5 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 
+$steel-blue-color: rgba(70, 130, 180, .9);
+
 body {
   background-attachment: fixed;
   background-image: url('public/ridebos-back.png');
@@ -18,7 +20,7 @@ body {
 }
 
 header {
-  background-color: rgba(70, 130, 180, .9);
+  background-color: $steel-blue-color;
   height: 150px;
   margin: 0 auto;
 }
