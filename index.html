@@ -12,6 +12,42 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>RideBOS</h1>
+
+      <div class="col-4 box sign-out"><h2 id="display-message"></h2></div>
+      <form id="sign-up-form">
+        <legend> Sign up here to start tracking bike rides </legend>
+        <input required type="email" name="credentials[email]" placeholder="Enter Email" />
+        <input required type="password" name="credentials[password]" placeholder="Enter Password" />
+        <input required type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" />
+        <input type="submit" class="btn btn-primary" />
+        <br />
+      </form>
+
+      <form id="sign-in-form">
+        <legend> Sign in: </legend>
+        <input required type="email" name="credentials[email]" placeholder="Enter Email" />
+        <input required type="password" name="credentials[password]" placeholder="Enter Password" />
+        <input type="submit" class="btn btn-primary" />
+        <br />
+      </form>
+
+      <form id="change-password-form" class="hidden">
+        <legend> Change password: </legend>
+        <input required type="password" name="passwords[old]" placeholder="Enter Old Password" />
+        <input required type="password" name="passwords[new]" placeholder="Enter New Password" />
+        <input type="submit" class="btn btn-primary" />
+        <br />
+        <br />
+      </form>
+
+      <button id="sign-out-button" class="hidden"> Sign Out </button>
+      <br />
+      <div class="col-4 box sign-out"><h2 id="password-message"></h2></div>
+
+
+
+
+
     </body>
 </html>
