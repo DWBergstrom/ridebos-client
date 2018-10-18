@@ -25,7 +25,19 @@ const createRide = function (rideData) {
   })
 }
 
+const getOneRide = function (rideData) {
+  const rideId = rideData.ride.id
+  return $.ajax({
+    url: config.apiUrl + '/rides/' + rideId,
+    headers: {
+      'Authorization': `Token token=${store.user.token}`
+    },
+    method: 'GET'
+  })
+}
+
 module.exports = {
   getRides,
-  createRide
+  createRide,
+  getOneRide
 }

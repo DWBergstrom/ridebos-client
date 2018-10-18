@@ -16,4 +16,5 @@ $(() => {
   $('#sign-out-button').on('click', authEvents.onSignOut)
   $('#total-rides').on('click', rideEvents.onGetRides)
   $('#ride-create').on('submit', rideEvents.onCreateRide)
+  $('#one-ride').on('submit', rideEvents.onGetOneRide)
 })

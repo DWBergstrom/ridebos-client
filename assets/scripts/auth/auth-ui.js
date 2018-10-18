@@ -31,6 +31,7 @@ const signInSuccess = function (response) {
   $('#sign-out-button').removeClass('hidden')
   $('#total-rides').removeClass('hidden')
   $('#ride-create').removeClass('hidden')
+  $('#one-ride').removeClass('hidden')
 }
 
 const signInError = function () {
