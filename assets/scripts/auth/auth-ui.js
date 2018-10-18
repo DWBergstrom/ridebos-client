@@ -23,19 +23,13 @@ const signInSuccess = function (response) {
   $('#sign-in-form').trigger('reset')
   $('#change-password-form').trigger('reset')
   $('#display-message2').show()
-  $('.display-message2').html('Click "New Game" to start playing!')
   store.user = response.user
   $('#sign-up-form').addClass('hidden')
   $('#sign-in-form').addClass('hidden')
   $('#change-password-form').removeClass('hidden')
-  $('.game-board').html('')
   $('.display-message2').removeClass('hidden')
-  $('.game-title').removeClass('hidden')
   $('#sign-out-button').removeClass('hidden')
-  $('#reset-game-board').removeClass('hidden')
-  $('.game-alert').removeClass('hidden')
-  $('.game-details').removeClass('hidden')
-  $('#games-played').removeClass('hidden')
+  $('#total-rides').removeClass('hidden')
 }
 
 const signInError = function () {
