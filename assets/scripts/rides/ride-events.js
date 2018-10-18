@@ -3,6 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./ride-api.js')
 const ui = require('./ride-ui.js')
+const store = require('../store.js')
 
 const onGetRides = function () {
   api.getRides()
@@ -34,9 +35,19 @@ const onUpdateRide = function (event) {
     .catch(console.log)
 }
 
+const onDestroyRide = function (event) {
+  event.preventDefault()
+  const rideData = getFormFields(event.target)
+  store.rideData = rideData
+  api.destroyOneRide(rideData)
+    .then(ui.onDestroyOneRideSuccess)
+    .catch(console.log)
+}
+
 module.exports = {
   onGetRides,
   onCreateRide,
   onGetOneRide,
-  onUpdateRide
+  onUpdateRide,
+  onDestroyRide
 }

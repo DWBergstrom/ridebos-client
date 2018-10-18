@@ -1,5 +1,7 @@
 'use strict'
 
+const store = require('../store.js')
+
 const onGetRidesSuccess = function (response) {
   // empty content element
   $('#ride-content').html('')
@@ -58,7 +60,7 @@ const onGetOneRideSuccess = function (response) {
     `)
   // append rideHTML to content
   $('#ride-content').append(rideHTML)
-  $('#ride-content').prepend(`<h2>Your ride:  </h2>
+  $('#ride-content').prepend(`<h2>Your requested ride:  </h2>
     <br />`)
 }
 
@@ -77,7 +79,23 @@ const onUpdateRideSuccess = function (response) {
     `)
   // append rideHTML to content
   $('#ride-content').append(rideHTML)
-  $('#ride-content').prepend(`<h2>Your new ride:  </h2>
+  $('#ride-content').prepend(`<h2>Your updated ride:  </h2>
+    <br />`)
+}
+
+const onDestroyOneRideSuccess = function (response) {
+  console.log(response)
+  // empty content element
+  $('#ride-content').html('')
+  const rideId = store.rideData.ride.id
+  // build HTML element with data
+  const rideHTML = (`
+    <p>ID of deleted ride: ${rideId} </p>
+    <br />
+    `)
+  // append rideHTML to content
+  $('#ride-content').append(rideHTML)
+  $('#ride-content').prepend(`<h2>Your deleted ride:  </h2>
     <br />`)
 }
 
@@ -85,5 +103,6 @@ module.exports = {
   onGetRidesSuccess,
   onCreateRideSuccess,
   onGetOneRideSuccess,
-  onUpdateRideSuccess
+  onUpdateRideSuccess,
+  onDestroyOneRideSuccess
 }

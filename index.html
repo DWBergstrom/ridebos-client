@@ -45,6 +45,11 @@
       <br />
       <div class="col-4 box sign-out"><h2 id="password-message"></h2></div>
 
+      <div>
+        <br />
+        <button id="total-rides" type="button" class="btn btn-primary hidden">Get my ride stats</button>
+        <br />
+      </div>
 
       <form id="ride-create" class="rides hidden">
         <br />
@@ -76,21 +81,23 @@
       <form id="one-ride" class="rides hidden">
         <div>
           <br />
-          <input required type="text" name="ride[id]" placeholder="Enter ride ID" />
+          <input required type="text" name="ride[id]" placeholder="Enter ride ID to view" />
           <button type="submit" class="btn btn-primary">Find my ride</button>
           <br />
         </div>
       </form>
 
-      <div>
-        <br />
-        <button id="total-rides" type="button" class="btn btn-primary hidden">Get my ride stats</button>
-        <br />
-      </div>
+      <form id="ride-destroy" class="rides hidden">
+        <div>
+          <br />
+            <input required type="text" name="ride[id]" placeholder="Enter ride ID to delete" />
+            <button type="submit" class="btn btn-primary">Delete ride</button>
+          <br />
+        </div>
+      </form>
 
       <div id="ride-content">
         <br />
-
       </div>
 
 

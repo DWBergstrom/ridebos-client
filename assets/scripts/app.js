@@ -17,5 +17,6 @@ $(() => {
   $('#total-rides').on('click', rideEvents.onGetRides)
   $('#ride-create').on('submit', rideEvents.onCreateRide)
   $('#ride-update').on('submit', rideEvents.onUpdateRide)
+  $('#ride-destroy').on('submit', rideEvents.onDestroyRide)
   $('#one-ride').on('submit', rideEvents.onGetOneRide)
 })
