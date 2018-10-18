@@ -25,6 +25,8 @@ const onGetRidesSuccess = function (response) {
 }
 
 const onCreateRideSuccess = function (response) {
+  // clear forms
+  $('.rides').trigger('reset')
   // empty content element
   $('#ride-content').html('')
   const ride = response.ride
@@ -44,12 +46,12 @@ const onCreateRideSuccess = function (response) {
 }
 
 const onGetOneRideSuccess = function (response) {
-  console.log('Async: inside .then for create ride')
-  console.log(response)
+  // clear forms
+  $('.rides').trigger('reset')
   // empty content element
   $('#ride-content').html('')
   const ride = response.ride
-  // build HTML element with data
+  // build HTML element with response
   const rideHTML = (`
     <h4>Ride Name: ${ride.ride_name} </h4>
     <p>Date: ${ride.date} </p>
@@ -58,13 +60,15 @@ const onGetOneRideSuccess = function (response) {
     <p>ID: ${ride.id} </p>
     <br />
     `)
-  // append rideHTML to content
+  // append rideHTML to ride-content
   $('#ride-content').append(rideHTML)
   $('#ride-content').prepend(`<h2>Your requested ride:  </h2>
     <br />`)
 }
 
 const onUpdateRideSuccess = function (response) {
+  // clear forms
+  $('.rides').trigger('reset')
   // empty content element
   $('#ride-content').html('')
   const ride = response.ride
@@ -84,7 +88,8 @@ const onUpdateRideSuccess = function (response) {
 }
 
 const onDestroyOneRideSuccess = function (response) {
-  console.log(response)
+  // clear forms
+  $('.rides').trigger('reset')
   // empty content element
   $('#ride-content').html('')
   const rideId = store.rideData.ride.id

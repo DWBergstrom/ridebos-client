@@ -14,7 +14,6 @@ const getRides = function () {
 }
 
 const createRide = function (rideData) {
-  console.log(rideData)
   return $.ajax({
     url: config.apiUrl + '/rides',
     headers: {
