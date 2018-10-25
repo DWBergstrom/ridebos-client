@@ -22,17 +22,29 @@ const onGetOneRide = function (event) {
 const onCreateRide = function (event) {
   event.preventDefault()
   const rideData = getFormFields(event.target)
-  api.createRide(rideData)
-    .then(ui.onCreateRideSuccess)
-    .catch(ui.onCreateRideFailure)
+  if (rideData.ride.distance < 0 || rideData.ride.time < 0) {
+    $('#ride-content').html('Please make sure your time and distance are positive numbers, and try adding your ride info again.')
+    window.scrollTo(0, 0)
+    $('.rides').trigger('reset')
+  } else {
+    api.createRide(rideData)
+      .then(ui.onCreateRideSuccess)
+      .catch(ui.onCreateRideFailure)
+  }
 }
 
 const onUpdateRide = function (event) {
   event.preventDefault()
   const rideData = getFormFields(event.target)
-  api.updateRide(rideData)
-    .then(ui.onUpdateRideSuccess)
-    .catch(ui.onUpdateRideFailure)
+  if (rideData.ride.distance < 0 || rideData.ride.time < 0) {
+    $('#ride-content').html('Please make sure your time and distance are positive numbers, and try updating your ride info again.')
+    window.scrollTo(0, 0)
+    $('.rides').trigger('reset')
+  } else {
+    api.updateRide(rideData)
+      .then(ui.onUpdateRideSuccess)
+      .catch(ui.onUpdateRideFailure)
+  }
 }
 
 const onDestroyRide = function (event) {
