@@ -42,8 +42,13 @@ const onAuthGetRidesSuccess = function (response) {
       longestRide = ride.distance
     }
     // get first 10 chars of date (removes time from datetime)
-    const tempDate = ride.date
-    const date = tempDate.substring(0, 10)
+    let tempDate = ride.date
+    let date = ''
+    if (tempDate === null) {
+      tempDate = ''
+    } else {
+      date = tempDate.substring(0, 10)
+    }
     // build HTML element with data
     const rideHTML = (`
       <h5>Ride Name: ${ride.ride_name} </h5>
@@ -62,6 +67,7 @@ const onAuthGetRidesSuccess = function (response) {
   averageSpeed = averageSpeed.toFixed(1)
   if (totalDistance === 0) {
     totalHTML = (`<h5>No rides yet. Please create a ride below`)
+    $('#ride-content').html('No rides yet')
   } else {
     totalHTML = (`
     <h5>Total rides: ${rideCount}</h5>

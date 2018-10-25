@@ -11,10 +11,17 @@ const onGetRidesSuccess = function (response) {
   $('#ride-content').html('')
   $('#totals-content').html('')
   // loop through API response data
+  let totalDistance = 0
   response.rides.forEach(ride => {
+    totalDistance += ride.distance
     // get first 10 chars of date (removes time from datetime)
-    const tempDate = ride.date
-    const date = tempDate.substring(0, 10)
+    let tempDate = ride.date
+    let date = ''
+    if (tempDate === null) {
+      tempDate = ''
+    } else {
+      date = tempDate.substring(0, 10)
+    }
     // build HTML element with data
     const rideHTML = (`
       <h5>Ride Name: ${ride.ride_name} </h5>
@@ -27,6 +34,9 @@ const onGetRidesSuccess = function (response) {
     // append rideHTML to content
     $('#ride-content').append(rideHTML)
   })
+  if (totalDistance === 0) {
+    $('#ride-content').html('No rides yet')
+  }
   // add heading when data is rendered
   $('#ride-content').prepend(`<h3>All your rides:  </h3>
     <br />`)
