@@ -152,10 +152,13 @@ const onUpdateRideSuccess = function (response) {
   $('#ride-content').show()
   $('#ride-content').html('')
   const ride = response.ride
+  // get first 10 chars of date (removes time from datetime)
+  const tempDate = ride.date
+  const date = tempDate.substring(0, 10)
   // build HTML element with data
   const rideHTML = (`
     <h4>Ride Name: ${ride.ride_name} </h4>
-    <p>Date: ${ride.date} </p>
+    <p>Date: ${date} </p>
     <p>Duration: ${ride.time} minutes</p>
     <p>Distance: ${ride.distance} miles</p>
     <p>Ride ID: ${ride.id} </p>
