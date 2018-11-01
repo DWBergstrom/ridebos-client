@@ -169,6 +169,9 @@ const onUpdateRideSuccess = function (response) {
   $('#ride-content').prepend(`<h4>Your updated ride:  </h4>
     <br />`)
   window.scrollTo(0, 0)
+  rideTotals.getRidesTotals()
+    .then(rideTotals.onGetRidesTotalsSuccess)
+    .catch(rideTotals.onGetRidesTotalsFailure)
 }
 
 const onUpdateRideFailure = function (response) {
