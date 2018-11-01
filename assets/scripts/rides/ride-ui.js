@@ -35,7 +35,7 @@ const onGetRidesSuccess = function (response) {
     $('#ride-content').append(rideHTML)
   })
   if (totalDistance === 0) {
-    $('#ride-content').html('No rides yet')
+    $('#ride-content').html('No rides yet. Please create one using the form.')
   }
   // add heading when data is rendered
   $('#ride-content').prepend(`<h3>All your rides:  </h3>
@@ -95,8 +95,8 @@ const onGetOneRideFailure = function (response) {
   $('#ride-content').show()
   $('#ride-content').html('')
   // build HTML element with data
-  const rideHTML = (`<h4>There was a problem retrieving your ride.  Please
-    try again.</h4>`)
+  const rideHTML = (`<h4>There was a problem retrieving this ride.  Please
+    double-check that the ID exists and try again.</h4>`)
   // append rideHTML to content
   $('#ride-content').append(rideHTML).fadeOut(5000)
   window.scrollTo(0, 0)

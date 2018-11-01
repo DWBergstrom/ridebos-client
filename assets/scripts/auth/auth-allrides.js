@@ -66,8 +66,8 @@ const onAuthGetRidesSuccess = function (response) {
   let averageSpeed = totalDistance / totalTime
   averageSpeed = averageSpeed.toFixed(1)
   if (totalDistance === 0) {
-    totalHTML = (`<h5>No rides yet. Please create a ride below`)
-    $('#ride-content').html('No rides yet')
+    totalHTML = (`<h5>No rides yet. Please create one using the form.`)
+    $('#ride-content').html('No rides yet.')
   } else {
     totalHTML = (`
     <h5>Total rides: ${rideCount}</h5>
