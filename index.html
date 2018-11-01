@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>RideBOS</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+
+    <body>
+      <header class="fixed-top">
+        <h1 class="main-title">RideBOS</h1>
+        <div class="welcome-user">
+        </div>
+        <div class="dropdown auth auth-in">
+          <button class="btn btn-dark dropdown-toggle auth-in auth-in-btn sign-in" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sign  in
+          </button>
+          <div class="dropdown-menu">
+            <form id="sign-in-form" class="px-4 py-3 auth auth-in">
+              <div class="form-group">
+                <label for="dropdownFormEmail">Email address</label>
+                <input required type="email" class="form-control" name="credentials[email]" placeholder="email@example.com">
+              </div>
+              <div class="form-group">
+                <label for="dropdownFormPassword">Password</label>
+                <input required type="password" name="credentials[password]" class="form-control" placeholder="Password" />
+              </div>
+              <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+          </div>
+        </div>
+        <div class="dropdown auth auth-in">
+          <button class="btn btn-dark dropdown-toggle auth-in auth-in-btn sign-up" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sign up
+          </button>
+          <div class="dropdown-menu">
+            <form id="sign-up-form" class="px-4 py-3 auth auth-in">
+              <legend> Sign up here to start tracking bike rides </legend>
+              <div class="form-group">
+                <label for="dropdownFormEmail">Email address</label>
+                <input required type="email" class="form-control" name="credentials[email]" placeholder="email@example.com">
+              </div>
+              <div class="form-group">
+                <label for="dropdownFormPassword">Password</label>
+                <input required type="password" name="credentials[password]" class="form-control" placeholder="Password" />
+              </div>
+              <div class="form-group">
+                <label for="dropdownFormPassword">Password</label>
+                <input required type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Confirm Password" />
+              </div>
+              <button type="submit" class="btn btn-dark">Sign up</button>
+            </form>
+          </div>
+        </div>
+        <div class="auth-out-items fixed-top">
+          <div class="dropdown auth auth-out hidden">
+            <button class="btn btn-secondary dropdown-toggle auth-out change-password" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Change password
+            </button>
+            <div class="dropdown-menu">
+              <form id="change-password-form" class="px-4 py-3 auth auth-out hidden">
+                <div class="form-group">
+                  <label for="dropdownFormPassword">Old Password</label>
+                  <input required type="password" name="passwords[old]" class="form-control" placeholder="Enter Old Password" />
+                </div>
+                <div class="form-group">
+                  <label for="dropdownFormPassword">New Password</label>
+                  <input required type="password" name="passwords[new]" class="form-control" placeholder="Enter New Password" />
+                </div>
+                <button type="submit" class="btn btn-success">Change password</button>
+              </form>
+            </div>
+          </div>
+          <button id="sign-out-button" class="btn btn-secondary auth auth-out hidden"> Sign Out </button>
+        </div>
+        <h2 id="auth-message" class="auth-message"></h2>
+      </header>
+
+      <div class="spacer">
+        &nbsp;
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="side-nav col-xs-6 col-md-4">
+            <div class="totals">
+            </div>
+            <div id="totals-content">
+            </div>
+            <button id="total-rides" type="button" class="btn btn-primary all-stats rides hidden">Show All Rides</button>
+            <form id="ride-create" class="rides hidden">
+              <h4>Add a new ride:</h4>
+              <div>
+                <input required type="text" name="ride[ride_name]" placeholder="Name your ride" />
+                <input required type="text" name="ride[distance]" placeholder="Distance in miles" />
+                <input required type="text" name="ride[time]" placeholder="Time in minutes" />
+                <input required type="date" name="ride[date]" placeholder="Date (YYYY-MM-DD)" />
+                <button type="submit" class="btn btn-primary">Create Ride</button>
+              </div>
+            </form>
+            <form id="ride-update" class="rides hidden">
+              <h4>Update a ride:</h4>
+              <div>
+                <input required type="text" name="ride[ride_name]" placeholder="Name your ride" />
+                <input required type="text" name="ride[distance]" placeholder="Distance in miles" />
+                <input required type="text" name="ride[time]" placeholder="Time in minutes" />
+                <input required type="date" name="ride[date]" placeholder="Date (YYYY-MM-DD)" />
+                <input required type="text" name="ride[id]" placeholder="Enter ride ID" />
+                <button type="submit" class="btn btn-primary">Update Ride</button>
+              </div>
+            </form>
+            <form id="one-ride" class="rides hidden">
+              <h4>Search for a ride:</h4>
+              <div>
+                <input required type="text" name="ride[id]" placeholder="Enter ride ID to view" />
+                <button type="submit" class="btn btn-primary">Find Ride</button>
+              </div>
+            </form>
+            <form id="ride-destroy" class="rides hidden">
+              <h4>Delete a ride:</h4>
+              <div>
+                  <input required type="text" name="ride[id]" placeholder="Enter ride ID to delete" />
+                  <button type="submit" class="btn btn-primary">Delete Ride</button>
+              </div>
+            </form>
+          </div>
+          <div class="ride-content col-xs-12 col-sm-6 col-md-8">
+            <div id="ride-content">
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
